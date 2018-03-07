@@ -1,1 +1,2 @@
-# gitlab-ci-test
+# gitlab-ci-test - a GitHub to GitLab CI integration example
+
