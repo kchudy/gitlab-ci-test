@@ -3,6 +3,8 @@
 BUILD_STATE=$1
 DESCRIPTION=$2
 
+env
+
 curl -X POST \
     https://api.github.com/repos/kchudy/gitlab-ci-test/statuses/${CI_COMMIT_SHA} \
     -H 'Authorization: token '${GITHUB_TOKEN} \
