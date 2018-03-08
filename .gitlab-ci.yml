@@ -1,5 +1,5 @@
 before_script:
-  - ["bash", "set_commit_status.sh", "pending", "The pipeline is running"]
+  - ./set_commit_status.sh pending Pending
 
 stages:
   - test
@@ -14,4 +14,4 @@ test:
 update_status_success:
   when: on_success
   script:
-    - ["bash", "set_commit_status.sh", "success", "The pipeline succeeded"]
+    - ./set_commit_status.sh success Success
