@@ -1,5 +1,5 @@
 before_script:
-  - echo 'Building '${CI_COMMIT_SHA}'...'
+  - echo "Building ${CI_COMMIT_SHA}..."
 
 stages:
   - test
@@ -10,3 +10,11 @@ test:
     - sleep 30
   tags:
     - macos
+
+update_status_success:
+  when:
+  script:
+    - curl -X POST \
+        https://api.github.com/repos/kchudy/gitlab-ci-test/statuses/${CI_COMMIT_SHA} \
+        -d '{"state": "success", "target_url": "http://localhost/root/gitlab-ci-test/pipelines/'${CI_PIPELINE_ID}'", "description": "The build succeeded!", "context": "continuous-integration/gitlab"}' \
+        -H "Authorization: token ${GITHUB_TOKEN}"
