@@ -1,0 +1,12 @@
+before_script:
+  - echo 'Building '${CI_COMMIT_SHA}'...'
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - sleep 30
+  tags:
+    - macos
