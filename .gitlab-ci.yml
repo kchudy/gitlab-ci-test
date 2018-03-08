@@ -1,5 +1,5 @@
 before_script:
-  - echo "Building ${CI_COMMIT_SHA}..."
+  - ["bash", "set_commit_status.sh", "pending", "The pipeline is running"]
 
 stages:
   - test
@@ -14,4 +14,4 @@ test:
 update_status_success:
   when: on_success
   script:
-    - ./set_commit_status.sh
+    - ["bash", "set_commit_status.sh", "success", "The pipeline succeeded"]
